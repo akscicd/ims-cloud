@@ -1,3 +1,9 @@
 provider "google" {
-  credentials = "auth.json"
+}
+
+terraform {
+  backend "gcs" {
+    bucket = "tf-cli-statefiles"
+    prefix = "backbone/regional/euwe3"
+  }
 }
