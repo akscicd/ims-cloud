@@ -74,12 +74,47 @@ resource "google_compute_network" "vpc_glbl_p_untrust" {
   project                 = google_project.host_hub_prj.project_id
   auto_create_subnetworks = false
 }
-resource "google_compute_subnetwork" "vpc_glbl_p_untrust-subnet" {
-  name          = "vpc-glbl-p-untrust-subnet"
+resource "google_compute_subnetwork" "vpc_glbl_p_untrust_subnet_euwe3" {
+  name          = "vpc-glbl-p-untrust-subnet-euwe3"
   ip_cidr_range = "10.0.0.0/20"
   network       = google_compute_network.vpc_glbl_p_untrust.name
   project       = google_project.host_hub_prj.project_id
   region        = "europe-west3"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_untrust_subnet_euwe1" {
+  name          = "vpc-glbl-p-untrust-subnet-euwe1"
+  ip_cidr_range = "20.0.0.0/20"
+  network       = google_compute_network.vpc_glbl_p_untrust.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "europe-west1"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_untrust_subnet_usea1" {
+  name          = "vpc-glbl-p-untrust-subnet-usea1"
+  ip_cidr_range = "30.0.0.0/20"
+  network       = google_compute_network.vpc_glbl_p_untrust.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "us-east1"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_untrust_subnet_usea4" {
+  name          = "vpc-glbl-p-untrust-subnet-usea4"
+  ip_cidr_range = "40.0.0.0/20"
+  network       = google_compute_network.vpc_glbl_p_untrust.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "us-east4"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_untrust_subnet_asso1" {
+  name          = "vpc-glbl-p-untrust-subnet-asso1"
+  ip_cidr_range = "50.0.0.0/20"
+  network       = google_compute_network.vpc_glbl_p_untrust.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "asia-southeast1"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_untrust_subnet_asso2" {
+  name          = "vpc-glbl-p-untrust-subnet-asso2"
+  ip_cidr_range = "60.0.0.0/20"
+  network       = google_compute_network.vpc_glbl_p_untrust.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "asia-southeast2"
 }
 
 
@@ -88,26 +123,100 @@ resource "google_compute_network" "vpc_glbl_p_transit" {
   project                 = google_project.host_hub_prj.project_id
   auto_create_subnetworks = false
 }
-resource "google_compute_subnetwork" "vpc_glbl_p_transit-subnet" {
-  name          = "vpc-glbl-p-transit-subnet"
+resource "google_compute_subnetwork" "vpc_glbl_p_transit_subnet_euwe3" {
+  name          = "vpc-glbl-p-transit-subnet-euwe3"
   ip_cidr_range = "10.0.16.0/20"
   network       = google_compute_network.vpc_glbl_p_transit.name
   project       = google_project.host_hub_prj.project_id
   region        = "europe-west3"
 }
+resource "google_compute_subnetwork" "vpc_glbl_p_transit_subnet_euwe1" {
+  name          = "vpc-glbl-p-transit-subnet-euwe1"
+  ip_cidr_range = "20.0.16.0/20"
+  network       = google_compute_network.vpc_glbl_p_transit.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "europe-west1"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_transit_subnet_usea1" {
+  name          = "vpc-glbl-p-transit-subnet-usea1"
+  ip_cidr_range = "30.0.16.0/20"
+  network       = google_compute_network.vpc_glbl_p_transit.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "us-east1"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_transit_subnet_usea4" {
+  name          = "vpc-glbl-p-transit-subnet-usea4"
+  ip_cidr_range = "40.0.16.0/20"
+  network       = google_compute_network.vpc_glbl_p_transit.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "us-east4"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_transit_subnet_aaso1" {
+  name          = "vpc-glbl-p-transit-subnet-asso1"
+  ip_cidr_range = "50.0.16.0/20"
+  network       = google_compute_network.vpc_glbl_p_transit.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "asia-southeast1"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_transit_subnet_asso2" {
+  name          = "vpc-glbl-p-transit-subnet-asso2"
+  ip_cidr_range = "60.0.16.0/20"
+  network       = google_compute_network.vpc_glbl_p_transit.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "asia-southeast2"
+}
+
+
 
 resource "google_compute_network" "vpc_glbl_p_mgmt" {
   name                    = "vpc-glbl-p-mgmt"
   project                 = google_project.host_hub_prj.project_id
   auto_create_subnetworks = false
 }
-resource "google_compute_subnetwork" "vpc_glbl_p_mgmt-subnet" {
-  name          = "vpc-glbl-p-mgmt-subnet"
+resource "google_compute_subnetwork" "vpc_glbl_p_mgmt_subnet_euwe3" {
+  name          = "vpc-glbl-p-mgmt-subnet-euwe3"
   ip_cidr_range = "10.0.32.0/20"
   network       = google_compute_network.vpc_glbl_p_mgmt.name
   project       = google_project.host_hub_prj.project_id
   region        = "europe-west3"
 }
+resource "google_compute_subnetwork" "vpc_glbl_p_mgmt_subnet_euwe1" {
+  name          = "vpc-glbl-p-mgmt-subnet-euwe1"
+  ip_cidr_range = "20.0.32.0/20"
+  network       = google_compute_network.vpc_glbl_p_mgmt.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "europe-west1"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_mgmt_subnet_usea1" {
+  name          = "vpc-glbl-p-mgmt-subnet-usea1"
+  ip_cidr_range = "30.0.32.0/20"
+  network       = google_compute_network.vpc_glbl_p_mgmt.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "us-east1"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_mgmt_subnet_usea4" {
+  name          = "vpc-glbl-p-mgmt-subnet-usea4"
+  ip_cidr_range = "40.0.32.0/20"
+  network       = google_compute_network.vpc_glbl_p_mgmt.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "us-east4"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_mgmt_subnet_asso1" {
+  name          = "vpc-glbl-p-mgmt-subnet-asso1"
+  ip_cidr_range = "50.0.32.0/20"
+  network       = google_compute_network.vpc_glbl_p_mgmt.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "asia-southeast1"
+}
+resource "google_compute_subnetwork" "vpc_glbl_p_mgmt_subnet_asso2" {
+  name          = "vpc-glbl-p-mgmt-subnet-asso2"
+  ip_cidr_range = "60.0.32.0/20"
+  network       = google_compute_network.vpc_glbl_p_mgmt.name
+  project       = google_project.host_hub_prj.project_id
+  region        = "asia-southeast2"
+}
+
+
 
 ####################End of Hub Project and Global VPCs#################################
 
