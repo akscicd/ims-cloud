@@ -161,3 +161,72 @@ resource "google_compute_subnetwork" "vpc_euwe3_dmzplatform_subnet" {
     project = "host-platform-prj-18200947911"
     region = "europe-west3"
 }
+
+############################## VPC Peering Start #############################################
+
+#DMZ VPC peerings with hub1 and vice-versa
+resource "google_compute_network_peering" "hub01_to_dmzprod" {
+  name         = "hub01-to-dmzprod"
+  network      = google_compute_network.vpc_euwe3_p_hub01.self_link
+  peer_network = google_compute_network.vpc_euwe3_dmzprod.self_link
+}
+resource "google_compute_network_peering" "dmzprod_to_hub01" {
+  name         = "dmzprod-to-hub01"
+  network      = google_compute_network.vpc_euwe3_dmzprod.self_link
+  peer_network = google_compute_network.vpc_euwe3_p_hub01.self_link
+}
+resource "google_compute_network_peering" "hub01_to_dmznonprod" {
+  name         = "hub01-to-dmznonprod"
+  network      = google_compute_network.vpc_euwe3_p_hub01.self_link
+  peer_network = google_compute_network.vpc_euwe3_dmznonprod.self_link
+}
+resource "google_compute_network_peering" "dmznonprod_to_hub01" {
+  name         = "dmznonprod-to-hub01"
+  network      = google_compute_network.vpc_euwe3_dmznonprod.self_link
+  peer_network = google_compute_network.vpc_euwe3_p_hub01.self_link
+}
+resource "google_compute_network_peering" "hub01_to_dmzplatform" {
+  name         = "hub01-to-dmzplatform"
+  network      = google_compute_network.vpc_euwe3_p_hub01.self_link
+  peer_network = google_compute_network.vpc_euwe3_dmzplatform.self_link
+}
+resource "google_compute_network_peering" "dmzplatform_to_hub01" {
+  name         = "dmzplatform-to-hub01"
+  network      = google_compute_network.vpc_euwe3_dmzplatform.self_link
+  peer_network = google_compute_network.vpc_euwe3_p_hub01.self_link
+}
+
+
+#Internal VPC peerings with hub2 and vice-versa
+resource "google_compute_network_peering" "hub02_to_prod" {
+  name         = "hub02-to-prod"
+  network      = google_compute_network.vpc_euwe3_p_hub02.self_link
+  peer_network = google_compute_network.vpc_euwe3_prod.self_link
+}
+resource "google_compute_network_peering" "prod_to_hub02" {
+  name         = "prod-to-hub02"
+  network      = google_compute_network.vpc_euwe3_prod.self_link
+  peer_network = google_compute_network.vpc_euwe3_p_hub02.self_link
+}
+resource "google_compute_network_peering" "hub02_to_nonprod" {
+  name         = "hub02-to-nonprod"
+  network      = google_compute_network.vpc_euwe3_p_hub02.self_link
+  peer_network = google_compute_network.vpc_euwe3_nonprod.self_link
+}
+resource "google_compute_network_peering" "nonprod_to_hub02" {
+  name         = "nonprod-to-hub02"
+  network      = google_compute_network.vpc_euwe3_nonprod.self_link
+  peer_network = google_compute_network.vpc_euwe3_p_hub02.self_link
+}
+resource "google_compute_network_peering" "hub02_to_platform" {
+  name         = "hub02-to-platform"
+  network      = google_compute_network.vpc_euwe3_p_hub02.self_link
+  peer_network = google_compute_network.vpc_euwe3_platform.self_link
+}
+resource "google_compute_network_peering" "platform_to_hub02" {
+  name         = "platform-to-hub02"
+  network      = google_compute_network.vpc_euwe3_platform.self_link
+  peer_network = google_compute_network.vpc_euwe3_p_hub02.self_link
+}
+
+############################## VPC Peering End #############################################
