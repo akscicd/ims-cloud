@@ -33,8 +33,6 @@ resource "google_compute_instance" "geuw3plapacap01" {
     network = "vpc-euwe3-dmzprod"
     subnetwork = "vpc-euwe3-dmzprod-subnet"
     subnetwork_project = "host-prd-prj-18200947911"
-    access_config {
-    }
   }
   metadata = {
     startup-script = <<-EOT
